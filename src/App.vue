@@ -3,13 +3,12 @@
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link> |
+      <router-link to="/items">items</router-link> |
       <span>
         <span v-if="userLoggedIn">You <b>are indeed</b> logged in</span>
 
         <!-- prettier-ignore -->
         <span v-else>You're <b>Not logged in</b></span
-
-
 
         >&nbsp;
 
