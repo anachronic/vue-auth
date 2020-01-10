@@ -14,9 +14,6 @@ export default {
   mixins: [authMixin],
   computed: {
     ...mapState(["loggedIn"])
-  },
-  mounted() {
-    console.log("do something else");
   }
 };
 </script>

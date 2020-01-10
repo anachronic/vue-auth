@@ -8,9 +8,13 @@
 
         <!-- prettier-ignore -->
         <span v-else>You're <b>Not logged in</b></span
+
+
+
         >&nbsp;
 
-        <router-link to="/login">log in</router-link>
+        <router-link to="/login" v-if="!userLoggedIn">log in</router-link>
+        <button @click="logoutUser" v-else>log out</button>
       </span>
     </div>
     <router-view />
@@ -18,7 +22,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapActions } from "vuex";
 import NotLoggedInError from "@/errors/NotLoggedInError";
 
 export default {
@@ -27,6 +31,9 @@ export default {
   },
   computed: {
     ...mapState({ userLoggedIn: "loggedIn" })
+  },
+  methods: {
+    ...mapActions(["logoutUser"])
   },
   errorCaptured(err) {
     if (err instanceof NotLoggedInError) {

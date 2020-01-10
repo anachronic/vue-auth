@@ -24,10 +24,10 @@ export default {
     };
   },
   methods: {
-    ...mapActions["authenticateUser"],
-    checkLogin() {
+    ...mapActions(["authenticateUser"]),
+    async checkLogin() {
       try {
-        this.authenticateUser(this.credentials);
+        await this.authenticateUser(this.credentials);
         this.formErrors = [];
       } catch (err) {
         this.formErrors = ["invalid credentials"];
