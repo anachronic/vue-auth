@@ -14,6 +14,7 @@
 
 <script>
 import { mapState } from "vuex";
+import NotLoggedInError from "@/errors/NotLoggedInError";
 
 export default {
   data() {
@@ -26,6 +27,12 @@ export default {
     console.log(
       "call the authenticateUser action in the store instead of this"
     );
+  },
+  errorCaptured(err) {
+    if (err instanceof NotLoggedInError) {
+      this.$router.replace("/");
+      return false;
+    }
   }
 };
 </script>
