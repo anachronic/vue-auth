@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios";
+import BadLoginError from "@/errors/BadLoginError";
 
 Vue.use(Vuex);
 
@@ -25,6 +26,8 @@ const actions = {
     if (response.status === 200) {
       commit("logUserIn");
     }
+
+    throw new BadLoginError();
   }
 };
 

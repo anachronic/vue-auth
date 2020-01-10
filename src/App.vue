@@ -5,7 +5,12 @@
       <router-link to="/about">About</router-link> |
       <span>
         <span v-if="userLoggedIn">You <b>are indeed</b> logged in</span>
-        <span v-else>You're <b>Not logged in</b></span>
+
+        <!-- prettier-ignore -->
+        <span v-else>You're <b>Not logged in</b></span
+        >&nbsp;
+
+        <router-link to="/login">log in</router-link>
       </span>
     </div>
     <router-view />
@@ -22,11 +27,6 @@ export default {
   },
   computed: {
     ...mapState({ userLoggedIn: "loggedIn" })
-  },
-  mounted() {
-    console.log(
-      "call the authenticateUser action in the store instead of this"
-    );
   },
   errorCaptured(err) {
     if (err instanceof NotLoggedInError) {
