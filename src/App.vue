@@ -2,11 +2,33 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/about">About</router-link> |
+      <span>
+        <span v-if="userLoggedIn">You <b>are indeed</b> logged in</span>
+        <span v-else>You're <b>Not logged in</b></span>
+      </span>
     </div>
     <router-view />
   </div>
 </template>
+
+<script>
+import { mapState } from "vuex";
+
+export default {
+  data() {
+    return {};
+  },
+  computed: {
+    ...mapState({ userLoggedIn: "loggedIn" })
+  },
+  mounted() {
+    console.log(
+      "call the authenticateUser action in the store instead of this"
+    );
+  }
+};
+</script>
 
 <style>
 #app {
